@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func connect(host, port string){
+func Connect(host, port string){
 	d := net.Dialer{Timeout: 300*time.Millisecond}
 
 	address := host + ":" + port	
@@ -26,7 +26,7 @@ func connect(host, port string){
 func VanillaScan(host string){
 	var port uint64 = 1
 	for ; port < 65536; port++ {
-		go connect(host, strconv.FormatUint(port, 10))
+		go Connect(host, strconv.FormatUint(port, 10))
 	}
 }
 
